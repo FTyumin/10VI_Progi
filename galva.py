@@ -3,12 +3,18 @@ from flask import Flask
 from flask import request
 from flask import url_for
 from flask import render_template
+import func
 
 app = Flask(__name__)
 
-@app.route('/')
+@app.route('/',methods = ['GET'])
 def root():
-    return render_template("bildes.html")
+  aa = float(request.args.get('a',default = '0.',type = str))
+  bb = float(request.args.get('b',default = '0.',type = str))
+  cc = float(request.args.get('c',default = '0.',type = str))
+  
+  rez = "Perimetrs = "+ str(func.tr_per(aa,bb,cc))
+  return render_template("sveikaPasaule.html",vards = "Trīsstūra perimetrs", rezultats = rez)
 
 
 @app.route('/tests')
