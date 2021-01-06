@@ -16,6 +16,20 @@ def root():
   rez = "Perimetrs = "+ str(func.tr_per(aa,bb,cc))
   return render_template("sveikaPasaule.html",vards = "Trīsstūra perimetrs", rezultats = rez)
 
+@app.route('/pogasall',methods = ['GET'])
+def pogasall():
+  aa = request.args.get('a',default = '0.',type = str)
+  aa = "Ievadīta vērtība: " + aa
+  
+  
+  
+  return render_template("sveikaPasaule.html",vards = "Kontroļu pārbaude", rezultats = aa)
+
+
+@app.route('/pogas')
+def pogas():
+  return render_template("pogas.html",vards = "Podziņas")
+
 
 @app.route('/tests')
 def health():
